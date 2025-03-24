@@ -3,40 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Membu Naturals</title>
+    <title>Membu Naturals - Premium Natural Hair Care</title>
+    <meta name="description" content="Discover premium natural hair care products that nourish and revitalize your hair with organic ingredients">
     <link rel="icon" type="image/png" href="w.jpg">
+    
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Preload important resources -->
+    <link rel="preload" href="https://images.unsplash.com/photo-1526947425960-945c6e72858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" as="image">
+    
     <style>
-        /* Global Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* CSS Variables for Theme */
         :root {
+            /* Colors */
             --primary: #6b4226;
-            --primary-dark: #553419;
+            --primary-dark: #4d2f1b;
             --primary-light: #8a6545;
             --secondary: #a67c52;
-            --secondary-hover: #bf9367;
+            --secondary-dark: #8a653f;
+            --secondary-light: #c49a70;
+            --tertiary: #dbc8b6;
+            --tertiary-light: #f1e7dd;
             --light-bg: #f9f5f1;
             --section-bg: #f1e7dd;
             --text-dark: #333;
-            --text-light: #666;
+            --text-medium: #555;
+            --text-light: #777;
             --white: #fff;
-            --cream: #fdf6ec;
+            --black: #000;
+            --success: #4CAF50;
+            --error: #f44336;
+            
+            /* Spacing */
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2rem;
+            --space-xxl: 3rem;
+            
+            /* Typography */
+            --text-xs: 0.75rem;
+            --text-sm: 0.875rem;
+            --text-base: 1rem;
+            --text-md: 1.125rem;
+            --text-lg: 1.25rem;
+            --text-xl: 1.5rem;
+            --text-xxl: 2rem;
+            --text-xxxl: 2.5rem;
+            --text-display: 3.5rem;
+            
+            /* Effects */
             --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            --box-shadow-light: 0 2px 10px rgba(0, 0, 0, 0.05);
-            --box-shadow-medium: 0 5px 15px rgba(107, 66, 38, 0.1);
-            --box-shadow-heavy: 0 10px 30px rgba(107, 66, 38, 0.15);
+            --transition-fast: all 0.15s ease-in-out;
+            --box-shadow-light: 0 2px 10px rgba(0, 0, 0, 0.1);
+            --box-shadow-medium: 0 5px 15px rgba(0, 0, 0, 0.2);
+            --box-shadow-heavy: 0 10px 30px rgba(0, 0, 0, 0.15);
             --border-radius-sm: 5px;
             --border-radius-md: 10px;
-            --border-radius-lg: 20px;
-            --border-radius-xl: 30px;
+            --border-radius-lg: 15px;
+            --border-radius-xl: 25px;
+            --border-radius-xxl: 50px;
+            
+            /* Layout */
+            --header-height: 80px;
+            --header-height-scrolled: 70px;
+            --max-width: 1200px;
+        }
+
+        /* Base Styles */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         html {
@@ -48,65 +93,92 @@
             background-color: var(--light-bg);
             color: var(--text-dark);
             line-height: 1.6;
-            overflow-x: hidden;
             font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            padding-top: var(--header-height);
         }
 
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Playfair Display', serif;
-            font-weight: 700;
             line-height: 1.2;
+            color: var(--primary);
+        }
+
+        p {
+            color: var(--text-medium);
+            margin-bottom: var(--space-md);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition-smooth);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        ul, ol {
+            list-style: none;
         }
 
         .container {
-            width: 90%;
-            max-width: 1200px;
+            width: 100%;
+            max-width: var(--max-width);
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 0 var(--space-lg);
         }
 
         section {
-            padding: 100px 0;
+            padding: var(--space-xxl) 0;
+            position: relative;
         }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
         }
 
-        ::-webkit-scrollbar-track {
-            background: var(--light-bg);
+        .text-uppercase {
+            text-transform: uppercase;
         }
 
-        ::-webkit-scrollbar-thumb {
-            background: var(--secondary);
-            border-radius: 10px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary);
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
         }
 
         /* Buttons */
         .btn {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             background-color: var(--secondary);
             color: var(--white);
-            padding: 14px 36px;
+            padding: var(--space-sm) var(--space-xl);
             border-radius: var(--border-radius-xl);
-            text-decoration: none;
             font-weight: 600;
             transition: var(--transition-smooth);
             border: 2px solid var(--secondary);
             cursor: pointer;
-            font-size: 1rem;
+            font-size: var(--text-sm);
             position: relative;
             overflow: hidden;
             z-index: 1;
+            text-align: center;
+            gap: var(--space-sm);
             letter-spacing: 0.5px;
             box-shadow: var(--box-shadow-light);
-            text-transform: uppercase;
-            font-size: 0.9rem;
         }
 
         .btn:hover {
@@ -118,7 +190,6 @@
 
         .btn:active {
             transform: translateY(-1px);
-            box-shadow: var(--box-shadow-light);
         }
 
         .btn::after {
@@ -140,6 +211,16 @@
             opacity: 0;
         }
 
+        .btn-outline {
+            background-color: transparent;
+            color: var(--secondary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--secondary);
+            color: var(--white);
+        }
+
         /* Header Styles */
         header {
             background-color: var(--white);
@@ -150,29 +231,32 @@
             width: 100%;
             z-index: 1000;
             transition: var(--transition-smooth);
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
         }
 
         header.scrolled {
+            height: var(--header-height-scrolled);
             box-shadow: var(--box-shadow-medium);
-            padding: 5px 0;
         }
 
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 0;
-            transition: var(--transition-smooth);
+            width: 100%;
+            height: 100%;
         }
 
         .logo {
-            font-size: 24px;
-            font-weight: bold;
+            font-size: var(--text-xl);
+            font-weight: 700;
             color: var(--primary);
-            text-decoration: none;
             display: flex;
             align-items: center;
             transition: var(--transition-smooth);
+            gap: var(--space-sm);
         }
 
         .logo:hover {
@@ -182,7 +266,6 @@
         .logo img {
             height: 45px;
             width: 45px;
-            margin-right: 12px;
             border-radius: 50%;
             object-fit: cover;
             box-shadow: 0 0 10px rgba(107, 66, 38, 0.2);
@@ -195,27 +278,15 @@
 
         .nav-links {
             display: flex;
-            list-style: none;
             align-items: center;
-        }
-
-        .nav-links li {
-            margin-left: 40px;
-            position: relative;
+            gap: var(--space-xl);
         }
 
         .nav-links a {
-            text-decoration: none;
-            color: var(--primary);
             font-weight: 500;
-            transition: var(--transition-smooth);
-            font-size: 1.05rem;
+            font-size: var(--text-md);
             position: relative;
-            padding: 5px 0;
-        }
-
-        .nav-links a:hover {
-            color: var(--secondary);
+            padding: var(--space-xs) 0;
         }
 
         .nav-links a::after {
@@ -236,17 +307,16 @@
         .cart-icon {
             display: flex;
             align-items: center;
-            margin-left: 30px;
+            margin-left: var(--space-lg);
             position: relative;
         }
 
         .cart-icon a {
             display: flex;
             align-items: center;
-            text-decoration: none;
             color: var(--primary);
             transition: var(--transition-smooth);
-            font-size: 1.2rem;
+            font-size: var(--text-lg);
         }
 
         .cart-icon a:hover {
@@ -259,14 +329,15 @@
             top: -10px;
             right: -10px;
             background-color: var(--secondary);
-            color: white;
+            color: var(--white);
             border-radius: 50%;
-            width: 20px;
-            height: 20px;
+            width: 22px;
+            height: 22px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 12px;
+            font-size: var(--text-xs);
+            font-weight: 600;
             box-shadow: 0 0 5px rgba(107, 66, 38, 0.3);
             transition: var(--transition-smooth);
         }
@@ -331,17 +402,18 @@
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1526947425960-945c6e72858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            min-height: 700px;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('https://images.unsplash.com/photo-1526947425960-945c6e72858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             display: flex;
             align-items: center;
-            color: white;
+            color: var(--white);
             text-align: center;
             position: relative;
-            margin-top: 0;
-            padding-top: 0;
+            margin-top: calc(-1 * var(--header-height));
         }
 
         .hero::before {
@@ -358,7 +430,7 @@
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
-            padding: 30px;
+            padding: var(--space-xl);
             position: relative;
             z-index: 2;
             animation: fadeIn 1.5s ease-in-out;
@@ -369,27 +441,28 @@
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 25px;
+            font-size: var(--text-display);
+            margin-bottom: var(--space-lg);
             animation: slideIn 1s ease-in-out;
             line-height: 1.2;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 40px;
+            font-size: var(--text-lg);
+            margin-bottom: var(--space-xl);
             animation: slideIn 1.2s ease-in-out;
             max-width: 80%;
             margin-left: auto;
             margin-right: auto;
             line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
         }
 
         .hero .btn {
             animation: fadeIn 1.8s ease-in-out;
-            font-size: 1rem;
-            padding: 15px 40px;
+            font-size: var(--text-md);
+            padding: var(--space-md) var(--space-xxl);
         }
 
         /* Animated scroll-down arrow */
@@ -404,14 +477,14 @@
             align-items: center;
             text-decoration: none;
             color: var(--white);
-            font-size: 0.9rem;
+            font-size: var(--text-sm);
             letter-spacing: 1px;
             animation: bounce 2s infinite;
         }
 
         .scroll-down i {
-            font-size: 1.5rem;
-            margin-top: 8px;
+            font-size: var(--text-xl);
+            margin-top: var(--space-xs);
         }
 
         @keyframes bounce {
@@ -438,7 +511,6 @@
 
         /* About Section */
         .about {
-            padding: 120px 0;
             background-color: var(--section-bg);
             position: relative;
             overflow: hidden;
@@ -457,13 +529,13 @@
 
         .section-header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: var(--space-xxl);
         }
 
         .section-header h2 {
-            font-size: 2.8rem;
+            font-size: var(--text-xxxl);
             color: var(--primary);
-            margin-bottom: 15px;
+            margin-bottom: var(--space-md);
             position: relative;
             display: inline-block;
         }
@@ -484,13 +556,13 @@
             color: var(--text-light);
             max-width: 700px;
             margin: 0 auto;
-            font-size: 1.1rem;
+            font-size: var(--text-md);
         }
 
         .about-content {
             display: flex;
             align-items: center;
-            gap: 70px;
+            gap: var(--space-xxl);
         }
 
         .about-img {
@@ -527,7 +599,6 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
-            display: block;
         }
 
         .about-img:hover img {
@@ -540,11 +611,11 @@
         }
 
         .about-text h2 {
-            font-size: 2.5rem;
-            margin-bottom: 25px;
+            font-size: var(--text-xxxl);
+            margin-bottom: var(--space-lg);
             color: var(--primary);
             position: relative;
-            padding-bottom: 15px;
+            padding-bottom: var(--space-md);
         }
 
         .about-text h2::after {
@@ -559,21 +630,255 @@
         }
 
         .about-text p {
-            margin-bottom: 25px;
             color: var(--text-light);
-            font-size: 1.1rem;
+            font-size: var(--text-md);
             line-height: 1.8;
         }
 
         .about-text .btn {
-            margin-top: 10px;
+            margin-top: var(--space-md);
+        }
+
+        /* Products Preview Section */
+        .products-preview {
+            background-color: var(--light-bg);
+            position: relative;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-xl);
+            margin-top: var(--space-xl);
+        }
+
+        .product-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+            box-shadow: var(--box-shadow-light);
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--box-shadow-medium);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 220px;
+            background-color: var(--tertiary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-image::before {
+            content: "Natural";
+            position: absolute;
+            top: 15px;
+            left: -35px;
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: var(--space-xs) 40px;
+            transform: rotate(-45deg);
+            font-size: var(--text-xs);
+            font-weight: bold;
+            z-index: 1;
+        }
+
+        .product-info {
+            padding: var(--space-lg);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-info h3 {
+            font-size: var(--text-lg);
+            margin-bottom: var(--space-sm);
+            color: var(--primary);
+        }
+
+        .product-description {
+            font-size: var(--text-sm);
+            color: var(--text-light);
+            margin-bottom: var(--space-md);
+            flex: 1;
+        }
+
+        .product-price {
+            font-size: var(--text-lg);
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: var(--space-lg);
+            display: flex;
+            align-items: center;
+        }
+
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .view-all {
+            text-align: center;
+            margin-top: var(--space-xl);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background-color: var(--section-bg);
+            position: relative;
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to bottom, var(--light-bg), transparent);
+            z-index: 1;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-xl);
+            margin-top: var(--space-xl);
+        }
+
+        .testimonial-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius-md);
+            padding: var(--space-lg);
+            box-shadow: var(--box-shadow-light);
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow-medium);
+        }
+
+        .testimonial-card::before {
+            content: '\201C';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 4rem;
+            color: var(--tertiary);
+            font-family: Georgia, serif;
+            line-height: 1;
+            z-index: 0;
+        }
+
+        .testimonial-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: var(--space-md);
+            color: var(--text-medium);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--tertiary);
+        }
+
+        .author-info h4 {
+            font-size: var(--text-md);
+            margin-bottom: var(--space-xs);
+        }
+
+        .author-info p {
+            font-size: var(--text-sm);
+            color: var(--text-light);
+            margin-bottom: 0;
+        }
+
+        /* Newsletter Section */
+        .newsletter {
+            background: linear-gradient(rgba(107, 66, 38, 0.9), rgba(107, 66, 38, 0.9)), 
+                        url('https://images.unsplash.com/photo-1519735777090-ec97162dc266?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+            padding: var(--space-xxl) 0;
+        }
+
+        .newsletter .section-header h2,
+        .newsletter .section-header p {
+            color: var(--white);
+        }
+
+        .newsletter-form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            gap: var(--space-sm);
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: var(--space-md);
+            border: none;
+            border-radius: var(--border-radius-xl);
+            font-family: 'Poppins', sans-serif;
+            font-size: var(--text-md);
+            outline: none;
+        }
+
+        .newsletter-input:focus {
+            box-shadow: 0 0 0 2px var(--secondary);
+        }
+
+        .newsletter .btn {
+            padding: var(--space-md) var(--space-xl);
+            border-radius: var(--border-radius-xl);
         }
 
         /* Footer */
         footer {
             background-color: var(--primary);
             color: var(--white);
-            padding: 80px 0 20px;
+            padding: var(--space-xxl) 0 var(--space-lg);
             position: relative;
             overflow: hidden;
         }
@@ -592,15 +897,15 @@
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 50px;
-            margin-bottom: 60px;
+            gap: var(--space-xl);
+            margin-bottom: var(--space-xxl);
         }
 
         .footer-column h3 {
-            font-size: 1.5rem;
-            margin-bottom: 25px;
+            font-size: var(--text-lg);
+            margin-bottom: var(--space-lg);
             position: relative;
-            padding-bottom: 15px;
+            padding-bottom: var(--space-sm);
             display: inline-block;
         }
 
@@ -616,17 +921,18 @@
         }
 
         .footer-column p {
-            margin-bottom: 20px;
+            margin-bottom: var(--space-md);
             color: #e0d2c6;
             line-height: 1.7;
         }
 
         .footer-links {
-            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
         }
 
         .footer-links li {
-            margin-bottom: 15px;
             transition: var(--transition-smooth);
         }
 
@@ -636,11 +942,9 @@
 
         .footer-links a {
             color: #e0d2c6;
-            text-decoration: none;
-            transition: var(--transition-smooth);
             display: inline-block;
             position: relative;
-            padding-left: 15px;
+            padding-left: var(--space-md);
         }
 
         .footer-links a::before {
@@ -660,15 +964,15 @@
         }
 
         .contact-info p {
-            margin-bottom: 20px;
+            margin-bottom: var(--space-md);
             display: flex;
             align-items: center;
         }
 
         .contact-info i {
-            margin-right: 15px;
+            margin-right: var(--space-sm);
             color: var(--secondary);
-            font-size: 1.2em;
+            font-size: var(--text-md);
             width: 25px;
             text-align: center;
             transition: var(--transition-smooth);
@@ -680,7 +984,6 @@
 
         .contact-info a {
             color: #e0d2c6;
-            text-decoration: none;
             transition: var(--transition-smooth);
         }
 
@@ -690,21 +993,20 @@
 
         .social-icons {
             display: flex;
-            gap: 15px;
-            margin-top: 30px;
+            gap: var(--space-sm);
+            margin-top: var(--space-lg);
         }
 
         .social-icons a {
             color: var(--white);
             background-color: rgba(166, 124, 82, 0.2);
-            width: 45px;
-            height: 45px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: var(--transition-smooth);
-            text-decoration: none;
             position: relative;
             overflow: hidden;
             border: 1px solid rgba(166, 124, 82, 0.3);
@@ -740,10 +1042,10 @@
 
         .footer-bottom {
             text-align: center;
-            padding-top: 30px;
-            margin-top: 30px;
+            padding-top: var(--space-lg);
+            margin-top: var(--space-lg);
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
+            font-size: var(--text-sm);
             color: #e0d2c6;
         }
 
@@ -812,11 +1114,11 @@
         /* Responsive Styles */
         @media (max-width: 1200px) {
             .about-content {
-                gap: 40px;
+                gap: var(--space-xl);
             }
             
             .hero h1 {
-                font-size: 3rem;
+                font-size: var(--text-xxxl);
             }
         }
 
@@ -828,20 +1130,25 @@
             .about-img {
                 width: 100%;
                 max-width: 500px;
-                margin: 0 auto 40px;
+                margin: 0 auto var(--space-xl);
                 height: 350px;
             }
 
             section {
-                padding: 80px 0;
+                padding: var(--space-xl) 0;
             }
 
             .hero h1 {
-                font-size: 2.8rem;
+                font-size: var(--text-xxl);
             }
         }
 
         @media (max-width: 768px) {
+            :root {
+                --header-height: 70px;
+                --header-height-scrolled: 60px;
+            }
+            
             .hamburger {
                 display: block;
             }
@@ -868,15 +1175,15 @@
             }
 
             .nav-links li {
-                margin: 15px 0;
+                margin: var(--space-sm) 0;
                 width: 100%;
             }
 
             .nav-links a {
                 display: block;
                 width: 100%;
-                padding: 10px 0;
-                font-size: 1.2rem;
+                padding: var(--space-sm) 0;
+                font-size: var(--text-lg);
                 border-bottom: 1px solid rgba(107, 66, 38, 0.1);
             }
 
@@ -886,19 +1193,20 @@
 
             .hero {
                 height: 90vh;
+                min-height: 600px;
             }
 
             .hero-content {
-                padding: 20px;
+                padding: var(--space-lg);
             }
 
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: var(--text-xxl);
             }
 
             .hero p {
-                font-size: 1.1rem;
-                margin-bottom: 30px;
+                font-size: var(--text-md);
+                margin-bottom: var(--space-lg);
                 max-width: 100%;
             }
 
@@ -907,15 +1215,15 @@
             }
 
             .section-header h2 {
-                font-size: 2.2rem;
+                font-size: var(--text-xxl);
             }
 
             .about-text h2 {
-                font-size: 2rem;
+                font-size: var(--text-xl);
             }
 
             .footer-content {
-                gap: 30px;
+                gap: var(--space-lg);
             }
 
             .scroll-top {
@@ -924,19 +1232,23 @@
                 width: 45px;
                 height: 45px;
             }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
         }
 
         @media (max-width: 576px) {
             .hero h1 {
-                font-size: 2rem;
+                font-size: var(--text-xl);
             }
 
             .hero p {
-                font-size: 1rem;
+                font-size: var(--text-base);
             }
 
             .hero-content {
-                padding: 15px;
+                padding: var(--space-md);
             }
 
             .about-img {
@@ -944,33 +1256,33 @@
             }
 
             section {
-                padding: 60px 0;
+                padding: var(--space-lg) 0;
             }
 
             .section-header {
-                margin-bottom: 40px;
+                margin-bottom: var(--space-xl);
             }
 
             .section-header h2 {
-                font-size: 2rem;
+                font-size: var(--text-xl);
             }
 
             .about-text h2 {
-                font-size: 1.8rem;
+                font-size: var(--text-lg);
             }
 
             .about-text p {
-                font-size: 1rem;
+                font-size: var(--text-base);
             }
 
             .footer-column h3 {
-                font-size: 1.3rem;
+                font-size: var(--text-md);
             }
 
             .cart-icon span {
                 width: 18px;
                 height: 18px;
-                font-size: 10px;
+                font-size: var(--text-xs);
             }
         }
 
@@ -993,27 +1305,66 @@
             opacity: 1;
             visibility: visible;
         }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--light-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
     </style>
 </head>
 <body>
+    <!-- Page Loader -->
+    <div class="page-loader">
+        <div class="loader"></div>
+    </div>
+
     <!-- Header Section -->
     <header>
         <div class="container">
             <nav class="navbar">
                 <a href="index.html" class="logo">
-                    <img src="w.jpg" alt="Logo">
+                    <img src="w.jpg" alt="Membu Naturals Logo">
                     Membu Naturals
                 </a>
-                <ul class="nav-links">
+                
+                <button class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <ul class="nav-links" id="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="cart.html">Shop</a></li>
                     <li><a href="#about">About Us</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 
+                <div class="cart-icon">
+                    <a href="cart.html" id="view-cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cart-count">0</span>
+                    </a>
+                </div>
             </nav>
         </div>
     </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="overlay" id="overlay"></div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -1022,22 +1373,155 @@
             <p>Discover our premium range of natural hair products that nourish, protect, and revitalize your hair without harsh chemicals.</p>
             <a href="cart.html" class="btn">Shop Now</a>
         </div>
+        <a href="#about" class="scroll-down">
+            Scroll Down
+            <i class="fas fa-chevron-down"></i>
+        </a>
     </section>
 
     <!-- About Section -->
     <section class="about" id="about">
         <div class="container">
+            <div class="section-header">
+                <h2>Our Story</h2>
+                <p>Discover the passion behind our natural hair care products</p>
+            </div>
+            
             <div class="about-content">
                 <div class="about-img">
-                    <img src="www.jpg" alt="About Image">
+                    <img src="www.jpg" alt="About Membu Naturals">
                 </div>
                 <div class="about-text">
-                    <h2>Our Story</h2>
-                    <p>At Naturals, we believe that the best hair care comes from nature. Founded in 2022, our mission has always been to create products that work in harmony with your natural hair, not against it.</p>
+                    <h2>Crafted With Care</h2>
+                    <p>At Membu Naturals, we believe that the best hair care comes from nature. Founded in 2022, our mission has always been to create products that work in harmony with your natural hair, not against it.</p>
                     <p>All of our products are formulated with organic ingredients, sustainable practices, and a commitment to ethical sourcing. We never test on animals and our packaging is eco-friendly.</p>
                     <a href="cart.html" class="btn">Shop Our Products</a>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Products Preview Section -->
+    <section class="products-preview">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Best Sellers</h2>
+                <p>Discover our most loved natural hair care products</p>
+            </div>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1608248544923-0ac26a275da0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Moisturizing Shampoo">
+                    </div>
+                    <div class="product-info">
+                        <h3>Moisturizing Shampoo</h3>
+                        <p class="product-description">Gentle, sulfate-free shampoo with aloe vera and coconut oil to cleanse without stripping natural oils.</p>
+                        <p class="product-price">KSh 850</p>
+                        <div class="product-actions">
+                            <a href="cart.html" class="btn">View Product</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1596704017250-13a5c473c0a6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Hydrating Conditioner">
+                    </div>
+                    <div class="product-info">
+                        <h3>Hydrating Conditioner</h3>
+                        <p class="product-description">Rich conditioner with shea butter and argan oil to deeply moisturize and detangle hair.</p>
+                        <p class="product-price">KSh 950</p>
+                        <div class="product-actions">
+                            <a href="cart.html" class="btn">View Product</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1590152886546-1fbd6e3db2f9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Hair Growth Oil">
+                    </div>
+                    <div class="product-info">
+                        <h3>Hair Growth Oil</h3>
+                        <p class="product-description">Nourishing blend of castor, jojoba, and rosemary oils to stimulate hair growth and strengthen follicles.</p>
+                        <p class="product-price">KSh 1200</p>
+                        <div class="product-actions">
+                            <a href="cart.html" class="btn">View Product</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="view-all">
+                <a href="cart.html" class="btn btn-outline">View All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Our Customers Say</h2>
+                <p>Real results from real people who love our products</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">I've struggled with dry, brittle hair for years. After just two weeks using Membu Naturals, my hair is softer and healthier than ever!</p>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah K." class="author-avatar">
+                            <div class="author-info">
+                                <h4>Sarah K.</h4>
+                                <p>Nairobi, Kenya</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">The hair growth oil is magical! My edges have grown back thicker and my hair has gained 3 inches in just 4 months.</p>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Amina J." class="author-avatar">
+                            <div class="author-info">
+                                <h4>Amina J.</h4>
+                                <p>Mombasa, Kenya</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">As a natural hair stylist, I only recommend products I truly believe in. Membu Naturals is now my go-to recommendation for all my clients.</p>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Grace W." class="author-avatar">
+                            <div class="author-info">
+                                <h4>Grace W.</h4>
+                                <p>Professional Stylist</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="section-header">
+                <h2>Join Our Community</h2>
+                <p>Subscribe to get exclusive offers, hair care tips, and product updates</p>
+            </div>
+            
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your email address" class="newsletter-input" required>
+                <button type="submit" class="btn">Subscribe</button>
+            </form>
         </div>
     </section>
 
@@ -1046,15 +1530,15 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3>Naturals</h3>
+                    <h3>Membu Naturals</h3>
                     <p>Premium natural hair care products for all hair types. Ethically sourced and sustainably packaged.</p>
                     <div class="social-icons">
-                        
-                        <a href="https://www.tiktok.com/@membu_naturals?_t=ZM-8usXJwxnnXR&_r=1" title="Twitter"><i class="fab fa-tiktok"></i></a>
-                        <a href="https://www.instagram.com/membu.naturals?igsh=ZGx6ZHA2amQzMDU2" title="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.facebook.com/share/1BNTY9bGpE/" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.tiktok.com/@membu_naturals?_t=ZM-8usXJwxnnXR&_r=1" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.instagram.com/membu.naturals?igsh=ZGx6ZHA2amQzMDU2" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/share/1BNTY9bGpE/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
+                
                 <div class="footer-column">
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
@@ -1064,40 +1548,135 @@
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
+                
+                
+                
                 <div class="footer-column contact-info">
                     <h3>Contact Us</h3>
                     <p><i class="fas fa-phone"></i> <a href="tel:+254703592854">Call Me</a></p>
                     <p><i class="fas fa-envelope"></i> <a href="mailto:msomwa20@gmail.com">Email Me</a></p>
+                    <p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p>
                     <p><i class="fas fa-clock"></i> Mon-Fri: 9am-5pm EAT</p>
                 </div>
             </div>
+            
             <div class="footer-bottom">
-                <p>&copy; 2025 Naturals Hair Care. All Rights Reserved.</p>
+                <p>&copy; 2025 Membu Naturals. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
+    <!-- Scroll-to-top Button -->
+    <a href="#" class="scroll-top" id="scroll-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
     <!-- Scripts -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Page Loader
+            const pageLoader = document.querySelector('.page-loader');
+            window.addEventListener('load', function() {
+                pageLoader.style.opacity = '0';
+                pageLoader.style.visibility = 'hidden';
+            });
+
+            // Mobile Menu Toggle
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.getElementById('nav-links');
+            const overlay = document.getElementById('overlay');
+
+            hamburger.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navLinks.classList.toggle('active');
+                overlay.classList.toggle('active');
+                document.body.classList.toggle('no-scroll');
+            });
+
+            overlay.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                this.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+            });
+
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    overlay.classList.remove('active');
+                    document.body.classList.remove('no-scroll');
+                });
+            });
+
+            // Header scroll effect
+            const header = document.querySelector('header');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Scroll-to-top button
+            const scrollTop = document.getElementById('scroll-top');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    scrollTop.classList.add('visible');
+                } else {
+                    scrollTop.classList.remove('visible');
+                }
+            });
+
+            scrollTop.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const headerHeight = document.querySelector('header').offsetHeight;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
             // Initialize cart count from localStorage
             updateCartCount();
-        });
 
-        function updateCartCount() {
-            const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-            let totalQuantity = 0;
-            
-            // Sum up all quantities in the cart
-            cartItems.forEach(item => {
-                totalQuantity += item.quantity;
-            });
-            
-            const cartCountElement = document.getElementById('cart-count');
-            if (cartCountElement) {
-                cartCountElement.textContent = totalQuantity;
+            function updateCartCount() {
+                const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+                let totalQuantity = 0;
+                
+                // Sum up all quantities in the cart
+                cartItems.forEach(item => {
+                    totalQuantity += item.quantity;
+                });
+                
+                const cartCountElement = document.getElementById('cart-count');
+                if (cartCountElement) {
+                    cartCountElement.textContent = totalQuantity;
+                }
             }
-        }
+        });
     </script>
 </body>
 </html>
