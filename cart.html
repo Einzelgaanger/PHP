@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop - Naturals Hair Care</title>
+    <link rel="icon" type="image/png" href="w.jpg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* Global Styles */
@@ -740,6 +741,98 @@
                 justify-content: center;
             }
         }
+
+        /* Add this to your existing CSS */
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+    /* Make product grid scrollable horizontally */
+    .products-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 15px;
+        padding-bottom: 20px; /* Add some padding for scrollbar */
+    }
+
+    .product-card {
+        flex: 0 0 80%; /* Adjust card width for mobile */
+        scroll-snap-align: start;
+        box-shadow: var(--box-shadow-light);
+        margin-right: 15px; /* Add spacing between cards */
+    }
+
+    /* Hide scrollbar for a cleaner look */
+    .products-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Enhance modal for mobile */
+    .modal-content {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .cart-items-table th,
+    .cart-items-table td {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+
+    .checkout-options {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .checkout-options button {
+        width: 100%;
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+
+    /* Remove Instagram checkout button */
+    #checkout-instagram {
+        display: none;
+    }
+
+    /* Adjust product actions for mobile */
+    .product-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .quantity-selector {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .add-to-cart-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Adjust header for mobile */
+    .navbar {
+        padding: 10px 0;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    .cart-icon a {
+        font-size: 1rem;
+    }
+
+    /* Adjust hero section for mobile */
+    .shop-hero h1 {
+        font-size: 2rem;
+    }
+
+    .shop-hero p {
+        font-size: 1rem;
+    }
+}
     </style>
 </head>
 <body>
@@ -750,7 +843,7 @@
                 <a href="index.html" class="logo">
                     <!-- Placeholder for logo image -->
                     <div style="width: 40px; height: 40px; background-color: #a67c52; border-radius: 50%; margin-right: 10px;"></div>
-                    Naturals
+                    Membu Naturals
                 </a>
                 
                 <div class="cart-icon">
@@ -881,7 +974,6 @@
             </div>
             <div class="checkout-options">
                 <button id="checkout-whatsapp" class="btn">Checkout via WhatsApp</button>
-                <button id="checkout-instagram" class="btn">Checkout via Instagram</button>
             </div>
         </div>
     </div>
@@ -1010,21 +1102,7 @@
                 clearCart();
             });
             
-            // Checkout via Instagram
-            document.getElementById('checkout-instagram').addEventListener('click', function() {
-                if (cart.length === 0) {
-                    alert('Your cart is empty!');
-                    return;
-                }
-                
-                const instagramUrl = 'https://www.instagram.com/membu.naturals?igsh=ZGx6ZHA2amQzMDU2';
-                alert('Redirecting to Instagram. Please send the following order details in a direct message:\n\n' + prepareOrderMessage());
-                
-                window.open(instagramUrl, '_blank');
-                
-                // Clear cart after checkout
-                clearCart();
-            });
+          
             
             // Update cart count
             function updateCartCount() {
