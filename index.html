@@ -1575,121 +1575,107 @@ footer {
         <i class="fas fa-arrow-up"></i>
     </a>
 
-    <!-- Scripts -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-    // Page Loader
-    const pageLoader = document.querySelector('.page-loader');
-    window.addEventListener('load', function() {
-        pageLoader.style.opacity = '0';
-        pageLoader.style.visibility = 'hidden';
-    });
-
-    // Mobile Menu Toggle
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('nav-links');
-    const overlay = document.getElementById('overlay');
-
-    hamburger.addEventListener('click', function() {
-        this.classList.toggle('active');
-        navLinks.classList.toggle('active');
-        overlay.classList.toggle('active');
-        document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
-    });
-
-    overlay.addEventListener('click', function() {
-        hamburger.classList.remove('active');
-        navLinks.classList.remove('active');
-        this.classList.remove('active');
-        document.body.style.overflow = '';
-    });
-
-    // Close mobile menu when clicking on a link
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', function() {
-            hamburger.classList.remove('active');
-            navLinks.classList.remove('active');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-    });
-
-    // Header scroll effect
-    const header = document.querySelector('header');
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
-
-    // Scroll-to-top button
-    const scrollTop = document.getElementById('scroll-top');
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 300) {
-            scrollTop.classList.add('visible');
-        } else {
-            scrollTop.classList.remove('visible');
-        }
-    });
-
-    scrollTop.addEventListener('click', function(e) {
-        e.preventDefault();
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                const headerHeight = document.querySelector('header').offsetHeight;
-                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-                
+            // Page Loader
+            const pageLoader = document.querySelector('.page-loader');
+            window.addEventListener('load', function() {
+                pageLoader.style.opacity = '0';
+                pageLoader.style.visibility = 'hidden';
+            });
+    
+            // Mobile Menu Toggle
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.getElementById('nav-links');
+            const overlay = document.getElementById('overlay');
+    
+            hamburger.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navLinks.classList.toggle('active');
+                overlay.classList.toggle('active');
+                document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+            });
+    
+            overlay.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                this.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+    
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // Only prevent default for anchor links that start with #
+                    if (this.getAttribute('href').startsWith('#')) {
+                        e.preventDefault();
+                        
+                        const targetId = this.getAttribute('href');
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            const headerHeight = document.querySelector('header').offsetHeight;
+                            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                            
+                            window.scrollTo({
+                                top: targetPosition,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                    
+                    // Close mobile menu
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+    
+            // Header scroll effect
+            const header = document.querySelector('header');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+    
+            // Scroll-to-top button
+            const scrollTop = document.getElementById('scroll-top');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    scrollTop.classList.add('visible');
+                } else {
+                    scrollTop.classList.remove('visible');
+                }
+            });
+    
+            scrollTop.addEventListener('click', function(e) {
+                e.preventDefault();
                 window.scrollTo({
-                    top: targetPosition,
+                    top: 0,
                     behavior: 'smooth'
                 });
+            });
+    
+            // Initialize cart count from localStorage
+            updateCartCount();
+    
+            function updateCartCount() {
+                const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+                let totalQuantity = 0;
+                
+                cartItems.forEach(item => {
+                    totalQuantity += item.quantity;
+                });
+                
+                const cartCountElement = document.getElementById('cart-count');
+                if (cartCountElement) {
+                    cartCountElement.textContent = totalQuantity;
+                }
             }
         });
-    });
-
-    // Initialize cart count from localStorage
-    updateCartCount();
-
-    function updateCartCount() {
-        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-        let totalQuantity = 0;
-        
-        cartItems.forEach(item => {
-            totalQuantity += item.quantity;
-        });
-        
-        const cartCountElement = document.getElementById('cart-count');
-        if (cartCountElement) {
-            cartCountElement.textContent = totalQuantity;
-        }
-    }
-
-    // Make sure all buttons are working
-    document.querySelectorAll('.btn').forEach(button => {
-        button.addEventListener('click', function(e) {
-            if (this.getAttribute('href') === '#') {
-                e.preventDefault();
-            }
-            // Add any additional button functionality here
-        });
-    });
-});
     </script>
 </body>
 </html>
