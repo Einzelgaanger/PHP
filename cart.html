@@ -6,21 +6,38 @@
     <title>Shop - Naturals Hair Care</title>
     <link rel="icon" type="image/png" href="w.jpg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* Global Styles */
         :root {
             --primary: #6b4226;
+            --primary-dark: #4d2f1b;
+            --primary-light: #8a5a3a;
             --secondary: #a67c52;
+            --secondary-dark: #8a653f;
+            --secondary-light: #c49a70;
             --tertiary: #dbc8b6;
+            --tertiary-light: #f1e7dd;
             --light-bg: #f9f5f1;
             --section-bg: #f1e7dd;
             --text-dark: #333;
-            --text-light: #666;
+            --text-medium: #555;
+            --text-light: #777;
             --white: #fff;
+            --black: #000;
+            --success: #4CAF50;
+            --error: #f44336;
             --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --transition-fast: all 0.15s ease-in-out;
             --box-shadow-light: 0 2px 10px rgba(0, 0, 0, 0.1);
             --box-shadow-medium: 0 5px 15px rgba(0, 0, 0, 0.2);
             --box-shadow-heavy: 0 10px 30px rgba(0, 0, 0, 0.15);
+            --border-radius-sm: 5px;
+            --border-radius-md: 10px;
+            --border-radius-lg: 15px;
+            --border-radius-xl: 25px;
+            --header-height: 70px;
+            --footer-height: 60px;
         }
 
         * {
@@ -40,26 +57,47 @@
             line-height: 1.6;
             overflow-x: hidden;
             font-family: 'Poppins', sans-serif;
+            padding-top: var(--header-height);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         h1, h2, h3, h4, h5 {
             font-family: 'Playfair Display', serif;
             line-height: 1.2;
+            color: var(--primary);
+        }
+
+        p {
+            color: var(--text-medium);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
         }
 
         .container {
-            width: 90%;
+            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 0 20px;
         }
 
         .btn {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             background-color: var(--secondary);
             color: var(--white);
             padding: 12px 30px;
-            border-radius: 30px;
+            border-radius: var(--border-radius-xl);
             text-decoration: none;
             font-weight: 600;
             transition: var(--transition-smooth);
@@ -70,6 +108,7 @@
             overflow: hidden;
             z-index: 1;
             text-align: center;
+            gap: 8px;
         }
 
         .btn:hover {
@@ -79,36 +118,58 @@
             border-color: var(--primary);
         }
 
+        .btn:active {
+            transform: translateY(0);
+            box-shadow: var(--box-shadow-light);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--secondary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--secondary);
+            color: var(--white);
+        }
+
         /* Header */
         header {
             background-color: var(--white);
             box-shadow: var(--box-shadow-light);
-            position: sticky;
+            position: fixed;
             top: 0;
-            z-index: 100;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
             transition: var(--transition-smooth);
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
         }
 
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 0;
+            width: 100%;
+            height: 100%;
         }
 
         .logo {
-            font-size: 24px;
-            font-weight: bold;
+            font-size: 1.5rem;
+            font-weight: 700;
             color: var(--primary);
             text-decoration: none;
             display: flex;
             align-items: center;
             transition: var(--transition-smooth);
             font-family: 'Playfair Display', serif;
+            height: 100%;
         }
 
         .logo:hover {
-            transform: scale(1.05);
+            transform: scale(1.02);
         }
 
         .logo img, .logo div {
@@ -138,6 +199,7 @@
             transition: var(--transition-smooth);
             padding: 8px 0;
             display: inline-block;
+            font-size: 1rem;
         }
 
         .nav-links a::after {
@@ -189,12 +251,13 @@
             background-color: var(--secondary);
             color: white;
             border-radius: 50%;
-            width: 20px;
-            height: 20px;
+            width: 22px;
+            height: 22px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 12px;
+            font-weight: 600;
             transition: var(--transition-smooth);
         }
 
@@ -203,35 +266,51 @@
             background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1526947425960-945c6e72858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
-            height: 50vh;
+            height: 40vh;
+            min-height: 300px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: var(--white);
             margin-bottom: 40px;
+            position: relative;
+        }
+
+        .shop-hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: linear-gradient(to bottom, transparent, var(--light-bg));
         }
 
         .shop-hero-content {
             max-width: 800px;
             padding: 0 20px;
+            position: relative;
+            z-index: 1;
         }
 
         .shop-hero h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             margin-bottom: 20px;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
         }
 
         .shop-hero p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             margin-bottom: 30px;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            color: rgba(255, 255, 255, 0.9);
         }
 
         /* Products Section */
         .products {
             padding: 60px 0;
+            flex: 1;
         }
 
         .section-title {
@@ -242,9 +321,14 @@
         }
 
         .section-title h2 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: var(--primary);
             margin-bottom: 10px;
+        }
+
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
         }
 
         .section-title::after {
@@ -267,10 +351,13 @@
 
         .product-card {
             background-color: var(--white);
-            border-radius: 10px;
+            border-radius: var(--border-radius-md);
             overflow: hidden;
             box-shadow: var(--box-shadow-light);
             transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .product-card:hover {
@@ -291,6 +378,17 @@
             position: relative;
         }
 
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
         .product-image::before {
             content: "Natural";
             position: absolute;
@@ -307,10 +405,13 @@
 
         .product-info {
             padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .product-info h3 {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             margin-bottom: 10px;
             color: var(--primary);
         }
@@ -319,8 +420,7 @@
             font-size: 0.9rem;
             color: var(--text-light);
             margin-bottom: 15px;
-            height: 60px;
-            overflow: hidden;
+            flex: 1;
         }
 
         .product-price {
@@ -332,27 +432,37 @@
             align-items: center;
         }
 
+        .product-price .original-price {
+            text-decoration: line-through;
+            color: var(--text-light);
+            font-size: 1rem;
+            margin-right: 10px;
+            font-weight: normal;
+        }
+
         .product-actions {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            margin-top: auto;
         }
 
         .quantity-selector {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             border: 1px solid var(--tertiary);
-            border-radius: 25px;
-            padding: 5px;
+            border-radius: var(--border-radius-xl);
+            padding: 4px;
+            background-color: var(--light-bg);
         }
 
         .quantity-btn {
             background-color: var(--light-bg);
             color: var(--primary);
             border: none;
-            width: 30px;
-            height: 30px;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
             cursor: pointer;
             transition: var(--transition-smooth);
@@ -360,6 +470,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 0.9rem;
         }
 
         .quantity-btn:hover {
@@ -367,14 +478,19 @@
             color: var(--white);
         }
 
+        .quantity-btn:active {
+            transform: scale(0.9);
+        }
+
         .quantity-input {
-            width: 40px;
+            width: 30px;
             text-align: center;
             border: none;
             background: transparent;
             font-weight: 500;
-            padding: 5px;
             font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            font-size: 0.9rem;
         }
 
         .quantity-input:focus {
@@ -386,18 +502,27 @@
             color: var(--white);
             border: none;
             padding: 10px 20px;
-            border-radius: 25px;
+            border-radius: var(--border-radius-xl);
             cursor: pointer;
             transition: var(--transition-smooth);
             font-weight: 600;
             display: flex;
             align-items: center;
             gap: 8px;
+            font-size: 0.9rem;
+            flex: 1;
+            justify-content: center;
+            max-width: 150px;
         }
 
         .add-to-cart-btn:hover {
             background-color: var(--primary);
             transform: translateY(-3px);
+            box-shadow: var(--box-shadow-medium);
+        }
+
+        .add-to-cart-btn:active {
+            transform: translateY(0);
         }
 
         .cart-summary-container {
@@ -412,6 +537,64 @@
             box-shadow: var(--box-shadow-light);
         }
 
+        /* Cart Notification */
+        .cart-notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--success);
+            color: white;
+            padding: 15px 25px;
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--box-shadow-heavy);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 1000;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: var(--transition-smooth);
+            max-width: 350px;
+        }
+
+        .cart-notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .cart-notification i {
+            font-size: 1.5rem;
+        }
+
+        .cart-notification-content {
+            flex: 1;
+        }
+
+        .cart-notification h4 {
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .cart-notification p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 0;
+        }
+
+        .close-notification {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: var(--transition-fast);
+        }
+
+        .close-notification:hover {
+            opacity: 1;
+        }
+
         /* Cart Summary Modal */
         .modal {
             display: none;
@@ -421,10 +604,12 @@
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.6);
-            z-index: 1000;
+            z-index: 2000;
             justify-content: center;
             align-items: center;
             animation: fadeIn 0.3s ease;
+            padding: 20px;
+            overflow-y: auto;
         }
 
         @keyframes fadeIn {
@@ -435,12 +620,14 @@
         .modal-content {
             background-color: var(--white);
             padding: 30px;
-            border-radius: 15px;
-            width: 90%;
+            border-radius: var(--border-radius-lg);
+            width: 100%;
             max-width: 600px;
             position: relative;
             box-shadow: var(--box-shadow-heavy);
             animation: slideIn 0.4s ease;
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
         @keyframes slideIn {
@@ -462,6 +649,8 @@
             align-items: center;
             justify-content: center;
             border-radius: 50%;
+            background-color: transparent;
+            border: none;
         }
 
         .close-modal:hover {
@@ -474,6 +663,7 @@
             margin-bottom: 25px;
             padding-bottom: 15px;
             border-bottom: 1px solid var(--section-bg);
+            font-size: 1.8rem;
         }
 
         .cart-items-table {
@@ -486,12 +676,18 @@
             padding: 12px;
             text-align: left;
             border-bottom: 1px solid var(--section-bg);
+            vertical-align: middle;
         }
 
         .cart-items-table th {
             background-color: var(--section-bg);
             font-weight: 600;
             color: var(--primary);
+            font-size: 0.9rem;
+        }
+
+        .cart-items-table td {
+            font-size: 0.9rem;
         }
 
         .remove-item-btn {
@@ -499,9 +695,10 @@
             color: var(--primary);
             border: none;
             padding: 7px 12px;
-            border-radius: 5px;
+            border-radius: var(--border-radius-sm);
             cursor: pointer;
             transition: var(--transition-smooth);
+            font-size: 0.8rem;
         }
 
         .remove-item-btn:hover {
@@ -511,19 +708,21 @@
 
         #cart-totals {
             background-color: var(--section-bg);
-            padding: 15px;
-            border-radius: 10px;
+            padding: 20px;
+            border-radius: var(--border-radius-md);
             margin-bottom: 25px;
         }
 
         #cart-totals p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             text-align: right;
+            margin: 0;
         }
 
         #cart-total-price {
-            font-weight: 600;
+            font-weight: 700;
             color: var(--primary);
+            font-size: 1.3rem;
         }
 
         .checkout-options {
@@ -536,39 +735,61 @@
             flex: 1;
             padding: 15px;
             font-size: 1rem;
-            border-radius: 10px;
+            border-radius: var(--border-radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
+            transition: var(--transition-smooth);
+            border: none;
+            cursor: pointer;
+        }
+
+        .checkout-options button:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--box-shadow-medium);
         }
 
         #checkout-whatsapp {
             background-color: #25D366;
-            border: none;
             color: white;
             font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition-smooth);
         }
 
         #checkout-whatsapp:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--box-shadow-medium);
+            background-color: #128C7E;
         }
 
         #checkout-instagram {
             background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-            border: none;
             color: white;
             font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition-smooth);
         }
 
         #checkout-instagram:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--box-shadow-medium);
+            opacity: 0.9;
+        }
+
+        /* Empty Cart State */
+        .empty-cart-state {
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .empty-cart-state i {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        .empty-cart-state h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .empty-cart-state p {
+            margin-bottom: 25px;
+            color: var(--text-light);
         }
 
         /* Footer */
@@ -580,6 +801,16 @@
             position: relative;
         }
 
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: linear-gradient(to top, transparent, var(--primary));
+        }
+
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -588,7 +819,7 @@
         }
 
         .footer-column h3 {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             margin-bottom: 25px;
             position: relative;
             padding-bottom: 15px;
@@ -630,6 +861,7 @@
             padding-left: 0;
             display: flex;
             align-items: center;
+            font-size: 0.9rem;
         }
 
         .footer-links a::before {
@@ -640,7 +872,7 @@
             left: -20px;
             opacity: 0;
             transition: var(--transition-smooth);
-            font-size: 0.8rem;
+            font-size: 0.7rem;
         }
 
         .footer-links a:hover {
@@ -654,10 +886,11 @@
         }
 
         .contact-info p {
-            margin-bottom: 18px;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
             transition: var(--transition-smooth);
+            font-size: 0.9rem;
         }
 
         .contact-info p:hover {
@@ -667,7 +900,7 @@
         .contact-info i {
             margin-right: 15px;
             color: var(--secondary);
-            font-size: 1.2rem;
+            font-size: 1rem;
             width: 20px;
             text-align: center;
         }
@@ -681,49 +914,74 @@
         .social-icons a {
             color: var(--white);
             background-color: var(--secondary);
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: var(--transition-smooth);
-            font-size: 1.2rem;
+            font-size: 1rem;
         }
 
         .social-icons a:hover {
             background-color: var(--tertiary);
             color: var(--primary);
-            transform: translateY(-5px) rotate(360deg);
+            transform: translateY(-5px);
         }
 
         .footer-bottom {
             text-align: center;
             padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.2);
-            font-size: 0.9rem;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
         }
 
         /* Responsive Styles */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
+        @media (max-width: 992px) {
             .shop-hero h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            }
+        }
 
+        @media (max-width: 768px) {
+            :root {
+                --header-height: 60px;
+            }
+            
+            .logo {
+                font-size: 1.3rem;
+            }
+            
+            .logo img, .logo div {
+                height: 35px;
+                width: 35px;
+            }
+            
+            .shop-hero {
+                height: 35vh;
+                min-height: 250px;
+            }
+            
+            .shop-hero h1 {
+                font-size: 1.8rem;
+            }
+            
             .shop-hero p {
                 font-size: 1rem;
             }
-
-            .products-grid {
-                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            
+            .section-title h2 {
+                font-size: 1.8rem;
             }
-
-            .checkout-options {
-                flex-direction: column;
+            
+            .product-card {
+                max-width: 100%;
             }
             
             .product-actions {
@@ -733,109 +991,150 @@
             
             .add-to-cart-btn {
                 width: 100%;
-                justify-content: center;
+                max-width: none;
             }
             
             .quantity-selector {
                 width: 100%;
                 justify-content: center;
             }
+            
+            .modal-content {
+                padding: 20px;
+            }
+            
+            .cart-items-table th, 
+            .cart-items-table td {
+                padding: 8px;
+                font-size: 0.8rem;
+            }
+            
+            .checkout-options {
+                flex-direction: column;
+            }
+            
+            .checkout-options button {
+                width: 100%;
+            }
+            
+            #checkout-instagram {
+                display: none;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
         }
 
-        /* Add this to your existing CSS */
+        @media (max-width: 576px) {
+            .shop-hero h1 {
+                font-size: 1.6rem;
+                margin-bottom: 15px;
+            }
+            
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .product-image {
+                height: 200px;
+            }
+            
+            .product-info {
+                padding: 20px;
+            }
+            
+            .modal-content {
+                padding: 15px;
+            }
+            
+            .cart-items-table th:nth-child(2),
+            .cart-items-table td:nth-child(2) {
+                display: none;
+            }
+        }
 
-/* Mobile-specific styles */
-@media (max-width: 768px) {
-    /* Make product grid scrollable horizontally */
-    .products-grid {
-        display: flex;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        gap: 15px;
-        padding-bottom: 20px; /* Add some padding for scrollbar */
-    }
+        /* Mobile-specific enhancements */
+        @media (max-width: 480px) {
+            .shop-hero {
+                height: 30vh;
+                min-height: 200px;
+            }
+            
+            .shop-hero h1 {
+                font-size: 1.5rem;
+            }
+            
+            .product-image {
+                height: 180px;
+            }
+            
+            .product-info h3 {
+                font-size: 1.2rem;
+            }
+            
+            .product-price {
+                font-size: 1.1rem;
+            }
+            
+            .add-to-cart-btn {
+                padding: 8px 15px;
+                font-size: 0.8rem;
+            }
+            
+            .quantity-btn {
+                width: 25px;
+                height: 25px;
+                font-size: 0.8rem;
+            }
+            
+            .quantity-input {
+                width: 25px;
+                font-size: 0.8rem;
+            }
+            
+            .cart-notification {
+                max-width: calc(100% - 40px);
+                right: 20px;
+                left: 20px;
+                bottom: 70px;
+            }
+        }
 
-    .product-card {
-        flex: 0 0 80%; /* Adjust card width for mobile */
-        scroll-snap-align: start;
-        box-shadow: var(--box-shadow-light);
-        margin-right: 15px; /* Add spacing between cards */
-    }
+        /* Accessibility Focus Styles */
+        button:focus, input:focus, a:focus {
+            outline: 2px solid var(--secondary-light);
+            outline-offset: 2px;
+        }
 
-    /* Hide scrollbar for a cleaner look */
-    .products-grid::-webkit-scrollbar {
-        display: none;
-    }
+        /* Animation for cart count update */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
 
-    /* Enhance modal for mobile */
-    .modal-content {
-        width: 95%;
-        padding: 20px;
-    }
-
-    .cart-items-table th,
-    .cart-items-table td {
-        padding: 8px;
-        font-size: 0.9rem;
-    }
-
-    .checkout-options {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .checkout-options button {
-        width: 100%;
-        padding: 12px;
-        font-size: 0.9rem;
-    }
-
-    /* Remove Instagram checkout button */
-    #checkout-instagram {
-        display: none;
-    }
-
-    /* Adjust product actions for mobile */
-    .product-actions {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .quantity-selector {
-        width: 100%;
-        justify-content: center;
-    }
-
-    .add-to-cart-btn {
-        width: 100%;
-        justify-content: center;
-    }
-
-    /* Adjust header for mobile */
-    .navbar {
-        padding: 10px 0;
-    }
-
-    .logo {
-        font-size: 1.2rem;
-    }
-
-    .cart-icon a {
-        font-size: 1rem;
-    }
-
-    /* Adjust hero section for mobile */
-    .shop-hero h1 {
-        font-size: 2rem;
-    }
-
-    .shop-hero p {
-        font-size: 1rem;
-    }
-}
+        .cart-update {
+            animation: pulse 0.5s ease;
+        }
     </style>
 </head>
 <body>
+    <!-- Cart Notification -->
+    <div class="cart-notification" id="cart-notification">
+        <i class="fas fa-check-circle"></i>
+        <div class="cart-notification-content">
+            <h4>Item Added to Cart</h4>
+            <p id="notification-message">1 x Product Name added to your shopping cart</p>
+        </div>
+        <button class="close-notification" id="close-notification">&times;</button>
+    </div>
+
     <!-- Header Section -->
     <header>
         <div class="container">
@@ -848,8 +1147,7 @@
                 
                 <div class="cart-icon">
                     <a href="#cart-summary" id="view-cart" style="text-decoration: none; color: #6b4226;">
-                        <!-- Cart Icon (Unicode alternative) -->
-                        🛒 
+                        <i class="fas fa-shopping-cart"></i>
                         <span id="cart-count">0</span>
                     </a>
                 </div>
@@ -857,20 +1155,27 @@
         </div>
     </header>
 
-  
+    <!-- Shop Hero Section -->
+    <section class="shop-hero">
+        <div class="shop-hero-content">
+            <h1>Premium Natural Hair Care</h1>
+            <p>Discover our collection of organic, cruelty-free products designed for all hair types</p>
+        </div>
+    </section>
 
     <!-- Products Section -->
     <section class="products" id="products">
         <div class="container">
-            <h2>Our Products</h2>
+            <div class="section-title">
+                <h2>Our Products</h2>
+                <p>Handcrafted with natural ingredients to nourish and protect your hair</p>
+            </div>
             <div class="products-grid">
                 <!-- Product 1 -->
                 <div class="product-card">
                     <div class="product-image">
                         <!-- Placeholder for product image -->
-                        <div style="width: 100%; height: 200px; background-color: #dbc8b6; display: flex; align-items: center; justify-content: center; color: #6b4226;">
-                            Product Image
-                        </div>
+                        <img src="https://images.unsplash.com/photo-1608248544923-0ac26a275da0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Moisturizing Shampoo">
                     </div>
                     <div class="product-info">
                         <h3>Moisturizing Shampoo</h3>
@@ -882,7 +1187,9 @@
                                 <input type="number" min="0" value="0" class="quantity-input" data-id="1">
                                 <button class="quantity-btn increase" data-id="1">+</button>
                             </div>
-                            <button class="add-to-cart-btn" data-id="1" data-name="Moisturizing Shampoo" data-price="850">Add to Cart</button>
+                            <button class="add-to-cart-btn" data-id="1" data-name="Moisturizing Shampoo" data-price="850">
+                                <i class="fas fa-cart-plus"></i> Add to Cart
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -890,9 +1197,7 @@
                 <!-- Product 2 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <div style="width: 100%; height: 200px; background-color: #dbc8b6; display: flex; align-items: center; justify-content: center; color: #6b4226;">
-                            Product Image
-                        </div>
+                        <img src="https://images.unsplash.com/photo-1596704017250-13a5c473c0a6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Hydrating Conditioner">
                     </div>
                     <div class="product-info">
                         <h3>Hydrating Conditioner</h3>
@@ -904,7 +1209,9 @@
                                 <input type="number" min="0" value="0" class="quantity-input" data-id="2">
                                 <button class="quantity-btn increase" data-id="2">+</button>
                             </div>
-                            <button class="add-to-cart-btn" data-id="2" data-name="Hydrating Conditioner" data-price="950">Add to Cart</button>
+                            <button class="add-to-cart-btn" data-id="2" data-name="Hydrating Conditioner" data-price="950">
+                                <i class="fas fa-cart-plus"></i> Add to Cart
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -912,9 +1219,7 @@
                 <!-- Product 3 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <div style="width: 100%; height: 200px; background-color: #dbc8b6; display: flex; align-items: center; justify-content: center; color: #6b4226;">
-                            Product Image
-                        </div>
+                        <img src="https://images.unsplash.com/photo-1590152886546-1fbd6e3db2f9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Hair Growth Oil">
                     </div>
                     <div class="product-info">
                         <h3>Hair Growth Oil</h3>
@@ -926,7 +1231,9 @@
                                 <input type="number" min="0" value="0" class="quantity-input" data-id="3">
                                 <button class="quantity-btn increase" data-id="3">+</button>
                             </div>
-                            <button class="add-to-cart-btn" data-id="3" data-name="Hair Growth Oil" data-price="1200">Add to Cart</button>
+                            <button class="add-to-cart-btn" data-id="3" data-name="Hair Growth Oil" data-price="1200">
+                                <i class="fas fa-cart-plus"></i> Add to Cart
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -934,9 +1241,7 @@
                 <!-- Product 4 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <div style="width: 100%; height: 200px; background-color: #dbc8b6; display: flex; align-items: center; justify-content: center; color: #6b4226;">
-                            Product Image
-                        </div>
+                        <img src="https://images.unsplash.com/photo-1596704017250-13a5c473c0a6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Leave-In Treatment">
                     </div>
                     <div class="product-info">
                         <h3>Leave-In Treatment</h3>
@@ -948,14 +1253,18 @@
                                 <input type="number" min="0" value="0" class="quantity-input" data-id="4">
                                 <button class="quantity-btn increase" data-id="4">+</button>
                             </div>
-                            <button class="add-to-cart-btn" data-id="4" data-name="Leave-In Treatment" data-price="750">Add to Cart</button>
+                            <button class="add-to-cart-btn" data-id="4" data-name="Leave-In Treatment" data-price="750">
+                                <i class="fas fa-cart-plus"></i> Add to Cart
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
             
             <div class="cart-summary-container">
-                <button id="view-cart-summary" class="btn">View Cart & Checkout</button>
+                <button id="view-cart-summary" class="btn">
+                    <i class="fas fa-shopping-cart"></i> View Cart & Checkout
+                </button>
             </div>
         </div>
     </section>
@@ -963,17 +1272,25 @@
     <!-- Cart Summary Modal -->
     <div id="cart-modal" class="modal">
         <div class="modal-content">
-            <span class="close-modal">&times;</span>
+            <button class="close-modal">&times;</button>
             <h2>Your Shopping Cart</h2>
             <div id="cart-items-container">
+                <!-- Empty state -->
+                <div class="empty-cart-state" id="empty-cart-message">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h3>Your Cart is Empty</h3>
+                    <p>Looks like you haven't added any items to your cart yet.</p>
+                    <button class="btn" id="continue-shopping-btn">Continue Shopping</button>
+                </div>
                 <!-- Cart items will be dynamically added here -->
-                <p id="empty-cart-message">Your cart is empty.</p>
             </div>
             <div id="cart-totals">
                 <p><strong>Total: </strong><span id="cart-total-price">KSh 0</span></p>
             </div>
             <div class="checkout-options">
-                <button id="checkout-whatsapp" class="btn">Checkout via WhatsApp</button>
+                <button id="checkout-whatsapp" class="btn">
+                    <i class="fab fa-whatsapp"></i> Checkout via WhatsApp
+                </button>
             </div>
         </div>
     </div>
@@ -986,11 +1303,33 @@
                     <h3>Naturals</h3>
                     <p>Premium natural hair care products for all hair types. Ethically sourced and sustainably packaged.</p>
                     <div class="social-icons">
-                        
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                     </div>
                 </div>
                 
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Shop</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
                 
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Haircare Street, Nairobi, Kenya</p>
+                        <p><i class="fas fa-phone-alt"></i> +254 700 123 456</p>
+                        <p><i class="fas fa-envelope"></i> info@membunaturals.com</p>
+                    </div>
+                </div>
+            </div>
+            
             <div class="footer-bottom">
                 <p>&copy; 2025 Naturals Hair Care. All Rights Reserved.</p>
             </div>
@@ -1003,6 +1342,35 @@
             // Initialize the cart
             let cart = JSON.parse(localStorage.getItem('cartItems')) || [];
             updateCartCount();
+            
+            // DOM elements
+            const cartNotification = document.getElementById('cart-notification');
+            const notificationMessage = document.getElementById('notification-message');
+            const closeNotificationBtn = document.getElementById('close-notification');
+            const continueShoppingBtn = document.getElementById('continue-shopping-btn');
+            
+            // Show cart notification
+            function showNotification(productName, quantity) {
+                notificationMessage.textContent = `${quantity} x ${productName} added to your shopping cart`;
+                cartNotification.classList.add('show');
+                
+                // Auto-hide after 5 seconds
+                setTimeout(() => {
+                    cartNotification.classList.remove('show');
+                }, 5000);
+            }
+            
+            // Close notification
+            closeNotificationBtn.addEventListener('click', function() {
+                cartNotification.classList.remove('show');
+            });
+            
+            // Continue shopping button
+            if (continueShoppingBtn) {
+                continueShoppingBtn.addEventListener('click', function() {
+                    document.getElementById('cart-modal').style.display = 'none';
+                });
+            }
             
             // Add event listeners for quantity buttons
             document.querySelectorAll('.quantity-btn').forEach(button => {
@@ -1048,14 +1416,19 @@
                         // Save cart to localStorage
                         localStorage.setItem('cartItems', JSON.stringify(cart));
                         
-                        // Update cart count
-                        updateCartCount();
+                        // Update cart count with animation
+                        const cartCount = document.getElementById('cart-count');
+                        cartCount.textContent = cart.reduce((total, item) => total + item.quantity, 0);
+                        cartCount.classList.add('cart-update');
+                        setTimeout(() => {
+                            cartCount.classList.remove('cart-update');
+                        }, 500);
                         
                         // Reset quantity input
                         quantityInput.value = 0;
                         
                         // Show notification
-                        alert(`Added ${quantity} ${productName}(s) to your cart!`);
+                        showNotification(productName, quantity);
                     }
                 });
             });
@@ -1067,17 +1440,19 @@
             const closeModalBtn = document.querySelector('.close-modal');
             
             function openModal() {
-                modal.style.display = 'block';
+                modal.style.display = 'flex';
                 renderCartItems();
+                document.body.style.overflow = 'hidden';
             }
             
             function closeModal() {
                 modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
             }
             
-            viewCartBtn.addEventListener('click', openModal);
-            viewCartSummaryBtn.addEventListener('click', openModal);
-            closeModalBtn.addEventListener('click', closeModal);
+            if (viewCartBtn) viewCartBtn.addEventListener('click', openModal);
+            if (viewCartSummaryBtn) viewCartSummaryBtn.addEventListener('click', openModal);
+            if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
             
             window.addEventListener('click', function(event) {
                 if (event.target === modal) {
@@ -1102,8 +1477,6 @@
                 clearCart();
             });
             
-          
-            
             // Update cart count
             function updateCartCount() {
                 let totalQuantity = 0;
@@ -1126,15 +1499,25 @@
                 
                 // Clear previous items
                 cartItemsContainer.innerHTML = '';
-                cartItemsContainer.appendChild(emptyCartMessage);
                 
                 if (cart.length === 0) {
-                    emptyCartMessage.style.display = 'block';
+                    // Show empty cart state
+                    const emptyState = document.createElement('div');
+                    emptyState.className = 'empty-cart-state';
+                    emptyState.innerHTML = `
+                        <i class="fas fa-shopping-cart"></i>
+                        <h3>Your Cart is Empty</h3>
+                        <p>Looks like you haven't added any items to your cart yet.</p>
+                        <button class="btn" id="continue-shopping-btn">Continue Shopping</button>
+                    `;
+                    cartItemsContainer.appendChild(emptyState);
+                    
+                    // Add event listener to continue shopping button
+                    document.getElementById('continue-shopping-btn').addEventListener('click', closeModal);
+                    
                     cartTotalPrice.textContent = 'KSh 0';
                     return;
                 }
-                
-                emptyCartMessage.style.display = 'none';
                 
                 // Create table for cart items
                 const table = document.createElement('table');
@@ -1146,7 +1529,7 @@
                     <tr>
                         <th>Product</th>
                         <th>Price</th>
-                        <th>Quantity</th>
+                        <th>Qty</th>
                         <th>Total</th>
                         <th>Action</th>
                     </tr>
