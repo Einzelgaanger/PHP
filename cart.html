@@ -135,7 +135,7 @@
 
         /* Header */
         header {
-            background-color: var(--white);
+            background-color:#7a79794a;
             box-shadow: var(--box-shadow-light);
             position: fixed;
             top: 0;
@@ -261,12 +261,17 @@
             transition: var(--transition-smooth);
         }
 
-        /* Shop Hero Section */
-        .shop-hero {
+        /* Reset default margin and padding */
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.shop-hero {
             background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1526947425960-945c6e72858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
-            height: 40vh;
+            height: 50vh;
             min-height: 300px;
             display: flex;
             align-items: center;
@@ -278,6 +283,7 @@
         }
 
         .shop-hero::before {
+           
             content: '';
             position: absolute;
             bottom: 0;
@@ -792,152 +798,202 @@
             color: var(--text-light);
         }
 
-        /* Footer */
-        footer {
-            background-color: var(--primary);
-            color: var(--white);
-            padding: 60px 0 20px;
-            margin-top: 60px;
-            position: relative;
-        }
+        /* Footer Styles */
+footer {
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 4rem 1rem;
+    position: relative;
+    overflow: hidden;
+    margin-top: var(--space-xxl);
+}
 
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 20px;
-            background: linear-gradient(to top, transparent, var(--primary));
-        }
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: linear-gradient(45deg, var(--primary) 25%, var(--secondary) 25%, var(--secondary) 50%, var(--primary) 50%, var(--primary) 75%, var(--secondary) 75%);
+    background-size: 20px 20px;
+}
 
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-xl);
+    margin-bottom: var(--space-xl);
+}
 
-        .footer-column h3 {
-            font-size: 1.3rem;
-            margin-bottom: 25px;
-            position: relative;
-            padding-bottom: 15px;
-        }
+.footer-column {
+    margin-bottom: var(--space-lg);
+}
 
-        .footer-column h3::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background-color: var(--secondary);
-            transition: var(--transition-smooth);
-        }
+.footer-column h3 {
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-lg);
+    position: relative;
+    padding-bottom: var(--space-sm);
+    color: var(--white);
+    font-weight: 600;
+}
 
-        .footer-column:hover h3::after {
-            width: 60px;
-        }
+.footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background-color: var(--secondary);
+    border-radius: 3px;
+}
 
-        .footer-links {
-            list-style: none;
-        }
+.footer-column p {
+    margin-bottom: var(--space-md);
+    color: var(--tertiary-light);
+    line-height: 1.7;
+    font-size: var(--text-md);
+}
 
-        .footer-links li {
-            margin-bottom: 15px;
-            transition: var(--transition-smooth);
-        }
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding: 0;
+}
 
-        .footer-links li:hover {
-            transform: translateX(5px);
-        }
+.footer-links li {
+    transition: var(--transition-smooth);
+    list-style: none;
+}
 
-        .footer-links a {
-            color: #e0d2c6;
-            text-decoration: none;
-            transition: var(--transition-smooth);
-            position: relative;
-            padding-left: 0;
-            display: flex;
-            align-items: center;
-            font-size: 0.9rem;
-        }
+.footer-links li:hover {
+    transform: translateX(5px);
+}
 
-        .footer-links a::before {
-            content: '\f054';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            position: absolute;
-            left: -20px;
-            opacity: 0;
-            transition: var(--transition-smooth);
-            font-size: 0.7rem;
-        }
+.footer-links a {
+    color: var(--tertiary-light);
+    display: inline-block;
+    position: relative;
+    padding-left: var(--space-md);
+    font-size: var(--text-md);
+    transition: var(--transition-smooth);
+}
 
-        .footer-links a:hover {
-            color: var(--white);
-            padding-left: 20px;
-        }
+.footer-links a::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    transition: var(--transition-smooth);
+}
 
-        .footer-links a:hover::before {
-            left: 0;
-            opacity: 1;
-        }
+.footer-links a:hover {
+    color: var(--white);
+    text-decoration: none;
+}
 
-        .contact-info p {
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            transition: var(--transition-smooth);
-            font-size: 0.9rem;
-        }
+.footer-links a:hover::before {
+    transform: translateX(3px);
+    color: var(--secondary);
+}
 
-        .contact-info p:hover {
-            transform: translateX(5px);
-        }
+.contact-info p {
+    margin-bottom: var(--space-md);
+    display: flex;
+    align-items: center;
+    color: var(--tertiary-light);
+    font-size: var(--text-md);
+}
 
-        .contact-info i {
-            margin-right: 15px;
-            color: var(--secondary);
-            font-size: 1rem;
-            width: 20px;
-            text-align: center;
-        }
+.contact-info i {
+    margin-right: var(--space-sm);
+    color: var(--secondary);
+    font-size: var(--text-md);
+    width: 25px;
+    text-align: center;
+    transition: var(--transition-smooth);
+}
 
-        .social-icons {
-            display: flex;
-            gap: 15px;
-            margin-top: 25px;
-        }
+.contact-info p:hover i {
+    transform: scale(1.2);
+}
 
-        .social-icons a {
-            color: var(--white);
-            background-color: var(--secondary);
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition-smooth);
-            font-size: 1rem;
-        }
+.contact-info a {
+    color: var(--tertiary-light);
+    transition: var(--transition-smooth);
+}
 
-        .social-icons a:hover {
-            background-color: var(--tertiary);
-            color: var(--primary);
-            transform: translateY(-5px);
-        }
+.contact-info a:hover {
+    color: var(--white);
+    text-decoration: none;
+}
 
-        .footer-bottom {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.7);
-        }
+.social-icons {
+    display: flex;
+    gap: var(--space-sm);
+    margin-top: var(--space-lg);
+}
 
+.social-icons a {
+    color: var(--white);
+    background-color: rgba(166, 124, 82, 0.3);
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(166, 124, 82, 0.5);
+    font-size: var(--text-md);
+}
+
+.social-icons a i {
+    position: relative;
+    z-index: 2;
+    transition: var(--transition-smooth);
+}
+
+.social-icons a:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    background-color: var(--secondary);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: var(--space-lg);
+    margin-top: var(--space-lg);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.copyright {
+    font-size: var(--text-lg);
+    color: var(--white);
+    font-weight: 500;
+    margin: 0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+    }
+    
+    .footer-column {
+        margin-bottom: var(--space-xl);
+    }
+    
+    .copyright {
+        font-size: var(--text-md);
+    }
+}
         /* Responsive Styles */
         @media (max-width: 992px) {
             .shop-hero h1 {
@@ -1140,8 +1196,7 @@
         <div class="container">
             <nav class="navbar">
                 <a href="index.html" class="logo">
-                    <!-- Placeholder for logo image -->
-                    <div style="width: 40px; height: 40px; background-color: #a67c52; border-radius: 50%; margin-right: 10px;"></div>
+                    <img src="w.jpg" alt="Membu Naturals Logo">
                     Membu Naturals
                 </a>
                 
@@ -1175,7 +1230,7 @@
                 <div class="product-card">
                     <div class="product-image">
                         <!-- Placeholder for product image -->
-                        <img src="https://images.unsplash.com/photo-1608248544923-0ac26a275da0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Moisturizing Shampoo">
+                        <img src="7.png" alt="Moisturizing Shampoo">
                     </div>
                     <div class="product-info">
                         <h3>Moisturizing Shampoo</h3>
@@ -1197,7 +1252,7 @@
                 <!-- Product 2 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1596704017250-13a5c473c0a6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Hydrating Conditioner">
+                        <img src="5.png" alt="Hydrating Conditioner">
                     </div>
                     <div class="product-info">
                         <h3>Hydrating Conditioner</h3>
@@ -1219,7 +1274,7 @@
                 <!-- Product 3 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1590152886546-1fbd6e3db2f9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Hair Growth Oil">
+                        <img src="6.png" alt="Hair Growth Oil">
                     </div>
                     <div class="product-info">
                         <h3>Hair Growth Oil</h3>
@@ -1241,7 +1296,7 @@
                 <!-- Product 4 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1596704017250-13a5c473c0a6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Leave-In Treatment">
+                        <img src="10.png" alt="Leave-In Treatment">
                     </div>
                     <div class="product-info">
                         <h3>Leave-In Treatment</h3>
@@ -1295,30 +1350,7 @@
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Naturals</h3>
-                    <p>Premium natural hair care products for all hair types. Ethically sourced and sustainably packaged.</p>
-                    <div class="social-icons">
-                        <a href="https://www.tiktok.com/@membu_naturals?_t=ZM-8usXJwxnnXR&_r=1" title="Twitter"><i class="fab fa-tiktok"></i></a>
-                        <a href="https://www.instagram.com/membu.naturals?igsh=ZGx6ZHA2amQzMDU2" title="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.facebook.com/share/1BNTY9bGpE/" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    </div>
-                </div>
-                
-                
-                
-                
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2025 Naturals Hair Care. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
+  
 
     <!-- Scripts -->
     <script>
@@ -1451,7 +1483,7 @@
                     return;
                 }
                 
-                const phoneNumber = '254708758500';
+                const phoneNumber = '254703592854';
                 const message = prepareOrderMessage();
                 
                 const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
